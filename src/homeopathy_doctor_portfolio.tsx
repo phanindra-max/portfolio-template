@@ -48,7 +48,7 @@ export default function App() {
   const [mousePos, setMousePos] = useState({ x: -100, y: -100 });
 
   useEffect(() => {
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e: MouseEvent) => {
       setMousePos({ x: e.clientX, y: e.clientY });
     };
 
@@ -271,6 +271,14 @@ Your task is to take a patient's unstructured descriptions of their chronic issu
           display: none;
         }
 
+        .custom-cursor-ball {
+          background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.95), rgba(255,255,255,0.4) 40%, rgba(255,255,255,0.15) 70%);
+          border: 1px solid rgba(255,255,255,0.6);
+          box-shadow: 0 10px 24px rgba(0,0,0,0.2), inset 0 0 10px rgba(255,255,255,0.55);
+          backdrop-filter: blur(6px);
+          -webkit-backdrop-filter: blur(6px);
+        }
+
         @media (hover: hover) and (pointer: fine) {
           body, a, button, select, input, textarea, [role="button"] {
             cursor: none !important;
@@ -283,21 +291,13 @@ Your task is to take a patient's unstructured descriptions of their chronic issu
       `}</style>
 
       <div
-        className="custom-cursor fixed pointer-events-none z-[9999] -translate-x-1/2 -translate-y-1/2 transition-transform duration-75 ease-out"
+        className="custom-cursor fixed pointer-events-none z-50 -translate-x-1/2 -translate-y-1/2 transition-transform duration-75 ease-out"
         style={{
           left: `${mousePos.x}px`,
           top: `${mousePos.y}px`
         }}
       >
-        <div
-          className="w-6 h-6 rounded-full"
-          style={{
-            background: 'radial-gradient(circle at 30% 30%, rgba(255,255,255,0.95), rgba(255,255,255,0.4) 40%, rgba(255,255,255,0.15) 70%)',
-            border: '1px solid rgba(255,255,255,0.6)',
-            boxShadow: '0 10px 24px rgba(0,0,0,0.2), inset 0 0 10px rgba(255,255,255,0.55)',
-            backdropFilter: 'blur(6px)'
-          }}
-        />
+        <div className="custom-cursor-ball w-6 h-6 rounded-full" />
       </div>
 
       {/* SELLER CONTROL BAR - Dynamic Theme Switcher & Value Prop */}
