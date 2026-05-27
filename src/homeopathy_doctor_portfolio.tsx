@@ -48,7 +48,7 @@ export default function App() {
   const [mousePos, setMousePos] = useState({ x: -100, y: -100 });
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
+    const handleMouseMove = (e) => {
       setMousePos({ x: e.clientX, y: e.clientY });
     };
 
@@ -273,10 +273,21 @@ Your task is to take a patient's unstructured descriptions of their chronic issu
 
         .custom-cursor-ball {
           background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.95), rgba(255,255,255,0.4) 40%, rgba(255,255,255,0.15) 70%);
-          border: 1px solid rgba(255,255,255,0.6);
-          box-shadow: 0 10px 24px rgba(0,0,0,0.2), inset 0 0 10px rgba(255,255,255,0.55), 0 0 0 1px rgba(0,0,0,0.2);
+          border: 1px solid rgba(255,255,255,0.7);
+          box-shadow: 0 10px 24px rgba(0,0,0,0.25), inset 0 0 10px rgba(255,255,255,0.55), 0 0 0 1px rgba(0,0,0,0.35);
           backdrop-filter: blur(6px);
           -webkit-backdrop-filter: blur(6px);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .custom-cursor {
+            transition: none;
+          }
+
+          .custom-cursor-ball {
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+          }
         }
 
         @media (hover: hover) and (pointer: fine) {
